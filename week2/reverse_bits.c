@@ -5,17 +5,21 @@
 // C standard states this can be anything >= 16 bits
 typedef unsigned int Word;
 
-// TODO
-Word reverse_bits(Word w) {
-
+Word reverse_bits(Word value) {
+    // we can figure out how many bits there are
+    // sizeof returns number of bytes, 8 bits/byte
     int n_bits = sizeof(Word) * 8;
     Word ret = 0;
 
     for (int i = 0; i < n_bits; i++) {
+        // we read from value left to right
         Word read_mask = 1u << (n_bits - 1 - i);
+        // and write to result right to left
         Word write_mask = 1u << i;
 
-        if (w & read_mask) {
+        if (value & read_mask) {
+            // if the bit we read is set we need to
+            // write the corresponding bit to result
             ret |= write_mask;
         }
     }

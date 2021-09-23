@@ -246,6 +246,7 @@ write_mask = 1u << i;
     ```
     `bits[0]` is '0', `bits[1]` is 1, and so on. Importantly, `bits[16]` is the null terminator, '\0'.
 - '0' is not the same as the number 0, and '1' is not the number 1. The former is an ASCII representation of a character.
+- Don't worry about negative numbers and the fact that it says 'signed number' - your only job is to shift the bits to the right place, and the computer will automatically interpret the value as negative if needed.
 
 ### sixteen_out
 - How much room will we need to malloc for our string? We may have 16 bits to represent as characters, but what else does every string contain at the end?
