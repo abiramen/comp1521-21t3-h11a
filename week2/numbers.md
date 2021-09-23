@@ -7,7 +7,7 @@ This tutorial is somewhat content-heavy, so it typically tends to go a bit overt
 ### Q1: How can you tell if an integer constant in a C program is 
 - decimal (base 10)     `21`         -> 0 to 9
 - hexadecimal (base 16) `0x15`      
-- octal (base 8)        `025`        -> 0 to 8
+- octal (base 8)        `025`        -> 0 to 7
 - binary (base 2) ...   `0b00010101` -> 0 and 1
     - not yet implemented in the C standard
     - gcc/dcc will let you do this -> don't use it however
