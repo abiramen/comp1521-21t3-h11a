@@ -1,12 +1,24 @@
 #include <assert.h>
 #include <stdio.h>
 
+// most machines have 32 bit integers
+// C standard states this can be anything >= 16 bits
 typedef unsigned int Word;
 
 // TODO
 Word reverse_bits(Word w) {
+
+    int n_bits = sizeof(Word) * 8;
     Word ret = 0;
 
+    for (int i = 0; i < n_bits; i++) {
+        Word read_mask = 1u << (n_bits - 1 - i);
+        Word write_mask = 1u << i;
+
+        if (w & read_mask) {
+            ret |= write_mask;
+        }
+    }
     return ret;
 }
 
