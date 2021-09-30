@@ -8,8 +8,8 @@ union my_first_union {
 int main(void) {
     union my_first_union a;
     
-    // TODO store something in the union:
-    
+    a.value = 0x00657942;
+
     printf("reading the union as an int: %8x\n", a.value);
     printf("reading the union as a string: %s\n", a.str);
 }

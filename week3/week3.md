@@ -102,24 +102,42 @@ See `my_first_union.c`.
 can assume `sizeof(char) == 1`, `sizeof(short) == 2`, `sizeof(int) == 4`
 
 - ```c
-    union { int a; int b; } u1;
+    union { 
+        int a;
+        int b;
+    } u1;
   ```
+    // sizeof a union is the size of its largest possible member
+    // size is 4 since integers are 4 bytes
+    (this union is pointless)
+- ```c
+    union { 
+        unsigned short a;
+        char b; 
+    } 
+    u2;
+  ```
+  // union needs two bytes
+  // (in reality, it'll take up 4 bytes - padding)
 
 - ```c
-    union { unsigned short a; char b; } u2;
+    union {
+        int a; // 4 bytes
+        char b[12]; // 12 bytes
+} 
+    u3;
   ```
+  // 12 bytes - largest member is 12 bytes
 
 - ```c
-    union { unsigned short a; char b; } u2;
+    union {
+        int a; // 4 bytes
+        char b[14]; // 14 bytes
+    } u2;
   ```
+  // union needs 14 bytes
+  // (in reality, tends to take up 16 bytes)
 
-- ```c
-    union { unsigned short a; char b; } u2;
-  ```
-
-- ```c
-    union { unsigned short a; char b; } u2;
-  ```
 
 # Struct and mask revision (useful for this week's lab)
 
@@ -131,7 +149,6 @@ For example:
 
 middle six bits are 101010
  lower six bits are 110110  
-
 ```
 
 # Lab notes
