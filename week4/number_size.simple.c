@@ -5,9 +5,19 @@ int main(void) {
     printf("Enter a number: ");
     scanf("%d", &x);
 
-    if (x > 100 && x < 1000) {
-        printf("medium\n");
-    } else {
-        printf("small/big\n");
-    }
+    if (x > 100) goto second_condition;
+
+print_other:
+    printf("small/big\n");
+    goto end;
+
+second_condition:
+    if (x < 1000) goto print_medium;
+    goto print_other;
+
+print_medium:
+    printf("medium\n");
+
+end:
+    return 0;
 }

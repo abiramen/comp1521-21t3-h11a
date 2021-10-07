@@ -5,11 +5,15 @@ int main(void) {
     printf("Enter a number: ");
     scanf("%d", &x);
 
-    if (x > 46340) {
-        printf("square too big for 32 bits\n");
-    } else {
-        y = x * x;
-        printf("%d\n", y);
-    }
+    if (x > 46340) goto print_too_big;
+        
+    y = x * x;
+    printf("%d\n", y);
+    goto end;
+
+print_too_big:
+    printf("square too big for 32 bits\n");
+
+end:
     return 0;
 }
