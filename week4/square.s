@@ -16,17 +16,16 @@ main:
         syscall
 
         li      $v0, 5          # scanf("%d", &x)
-        syscall
-        # v0 now contains the scanned in number
+        syscall                 # note: $v0 now contains the scanned in number
         move    $t0, $v0
 
         mul     $t1, $t0, $t0   # y = x * x
 
-        li      $v0, 1
+        li      $v0, 1          # printf("%d", y);
         move    $a0, $t1
         syscall
 
-        li      $v0, 11
+        li      $v0, 11         # putchar('\n')
         li      $a0, '\n'
         syscall
 

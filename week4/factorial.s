@@ -1,3 +1,6 @@
+# Calculate a factorial in MIPS using a loop.
+# Abiram Nadarajah, October 2021
+        
         .text
 main:
         # n is $t0, fac is $t1, i is $t2

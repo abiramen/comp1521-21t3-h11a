@@ -8,7 +8,8 @@ int main(void) {
     if (x > 46340) goto print_too_big;
         
     y = x * x;
-    printf("%d\n", y);
+    printf("%d", y);
+    putchar('\n');
     goto end;
 
 print_too_big:

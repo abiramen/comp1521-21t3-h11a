@@ -119,6 +119,7 @@ int main(void) {
     }
 }
 ```
+See `count.simple.c` and `count.s`.
 
 ## Translate this C program to simplified C, then translate it to MIPS assembler.
 
@@ -127,7 +128,7 @@ int main(void) {
 
 #include <stdio.h>
 
-int main (void) {
+int main(void) {
     int n;
     printf("n  = ");
     scanf("%d", &n);
@@ -137,7 +138,8 @@ int main (void) {
         fac *= i;
     }
 
-    printf ("n! = %d\n", fac);
+    printf("n! = %d\n", fac);
     return 0;
 }
 ```
+See `factorial.simple.c` and `factorial.s`.

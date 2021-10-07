@@ -1,11 +1,14 @@
+# Count by threes within a range using a loop.
+# Abiram Nadarajah, October 2021
+
         .text
 main:
-        li      $t0, 24         # x is $t0
+        li      $t0, 24         # int x = 24
 
 loop:
-        bge     $t0, 42, end    # if (x >= 42) goto end;
+        bge     $t0, 42, end    # if (x >= 42) goto end
 
-        li      $v0, 1          # printf("%d\n",x);
+        li      $v0, 1          # printf("%d\n",x)
         move    $a0, $t0
         syscall
 
@@ -17,5 +20,5 @@ loop:
         j       loop
 
 end:
-        li      $v0, 0          # return 0;
+        li      $v0, 0          # return 0
         jr      $ra
