@@ -8,6 +8,7 @@
 # }
 
         .text
+main:
                                 # x in $t0, y in $t1
 
         li      $v0, 4          # printf("Enter a number: ")
