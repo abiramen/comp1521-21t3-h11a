@@ -3,10 +3,10 @@
 #include <stdio.h>
 
 int fib(int n) {
-    if (n < 2) {
-    	return n;
-    }
+    if (n < 2) goto fib__base;
     return fib(n - 1) + fib(n - 2);
+fib__base:
+    return n;
 }
 
 int main(void) {
@@ -14,6 +14,10 @@ int main(void) {
     int n;
     scanf("%d", &n);
 
-    printf("Fibonacci of %d is %d\n", n, fib(n));
+    printf("Fibonacci of ");
+    printf("%d", n);
+    printf("is ");
+    printf("%d", fib(n));
+    putchar('\n');
     return 0;
 }
