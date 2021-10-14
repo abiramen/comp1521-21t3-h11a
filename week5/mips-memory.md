@@ -19,6 +19,10 @@ We'll take a few breaks throughout, since there is a fair amount of content.
 - See `broken.s`.
 
 ## Do-while loops? How do we translate a do-while loop to MIPS?
+
+- A do-while loop is basically a while loop.
+    - The do-while loop definitely runs at least once.
+
 See `do_while.c`, `do_while.simple.c`, and `do_while.s`.
 
 ## MIPS memory directives
@@ -48,6 +52,13 @@ int z[20];
 
 ```s
     .data
+u: .space 4
+v: .word 42
+w: .space 1
+x: .byte 'a'
+   .align 2
+y: .space 8
+z: .space 4 * 20
 ```
 
 ## Array memory layout
@@ -101,4 +112,5 @@ See `swap.c`, `swap.simple.c` and `swap.s`.
 See `flag.c` and `flag.s`.
 
 ## Functions
+Back at 12:45 :)
 See `fib.c`, `fib.simple.s` and `fib.s`.
