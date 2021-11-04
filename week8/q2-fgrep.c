@@ -38,9 +38,13 @@ int main(int argc, char *argv[]) {
         search_stream(stdin, "<stdin>", argv[1]);
     } else {
 
-        for(int argument = 2; argument < argc; argument = argument + 1) {
+        for (int argument = 2; argument < argc; argument = argument + 1) {
             FILE *in = fopen(argv[argument], "r");
-            // TODO: handle errors
+            
+            if (in == NULL) {
+                perror(argv[argument]);
+                return 1;
+            }
 
             search_stream(in, argv[argument], argv[1]);
             fclose(in);
@@ -51,7 +55,18 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+
+// ./fgrep test testfile.txt
+// testfile.txt: 1: This is a test
 void search_stream(FILE *stream, char stream_name[], char search_for[]) {
     // TODO: complete this function
     // hint: look at `strstr(3)'
+    char line[MAX_LINE];
+    int line_number = 1;
+    while (fgets(line, MAX_LINE, stream) != NULL) {
+        if (strstr(line, search_for) != NULL) {
+            printf("%s: %d: %s", stream_name, line_number, line);
+        }
+        line_number++;
+    }
 }

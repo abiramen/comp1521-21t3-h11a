@@ -8,7 +8,18 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-    // TODO: complete this function.
+    if (argc != 2) {
+        fprintf(stderr, "usage: %s <filename>\n", argv[0]);
+    }
+
+    FILE *stream = fopen(argv[1], "w");
+
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {
+        fputc(c, stream);
+    }
+    fputc('\n', stream);
+
     return 0;
 }
 
