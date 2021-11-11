@@ -7,7 +7,11 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i < argc; i++) {
         struct stat s;
         
-        // TODO: stat the file in argv[i], checking for errors.
+        if (stat(argv[i], &s) != 0) {
+            perror("stat");
+            // exit(1);
+            return 1;
+        }
  
  
         printf("-- file: %s --\n", argv[i]);
@@ -17,6 +21,13 @@ int main(int argc, char *argv[]) {
         printf("st_mode = %o\n", s.st_mode);
  
         // TODO: How can we check what kind of filesystem object this is?
+        if (S_ISDIR(s.st_mode)) {
+            printf("This file is a directory!\n");
+        } else if ((s.st_mode & S_IFMT) == S_IFREG) {
+            printf("This file is a regular file\n");
+        } else {
+            printf ("We have another type of file system object\n");
+        }
  
         printf("st_uid = %d\n", s.st_uid);
         printf("st_gid = %d\n", s.st_gid);

@@ -42,7 +42,26 @@ int main(int argc, char *argv[]) {
 }
 
 void chmod_if_needed(char *pathname) {
-    // TODO: Implement this function.
+    // statbuf contains a COPY of the metadata about the file
+    struct stat statbuf;
+    if (stat(pathname, &statbuf) != 0) {
+        perror("stat");
+        return;
+    }
+
+    if (statbuf.st_mode & S_IWOTH) {
+        // file is publically writeable, so we need to fix that
+        printf("removing public write from %s\n", pathname);
+        // new_mode has public write removed
+        mode_t new_mode = statbuf.st_mode & ~S_IWOTH;
+        if (chmod(pathname, new_mode) != 0) {
+            perror("chmod");
+            return;
+        }
+    } else {
+        printf("%s is not publically writable\n", pathname);
+    }
+
 }
 
 
