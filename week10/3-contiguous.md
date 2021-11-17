@@ -3,7 +3,7 @@
 For example:
 ![](contiguous.png)
 
-Doing this requires all the addresses in the programm to be rewritten relative to the new base address before we can perform its instructions.
+Doing this requires all the addresses in the program to be rewritten relative to the new base address before we can perform its instructions.
 
 Consider the following MIPS code, where 
 - `loop1` is located at 0x1000
