@@ -6,9 +6,9 @@ For example:
 Doing this requires all the addresses in the program to be rewritten relative to the new base address before we can perform its instructions.
 
 Consider the following MIPS code, where 
-- `loop1` is located at 0x1000
-- `end_loop1` is located at 0x1028
-- `array` is located at 0x2000. 
+- `loop1` is located at 0x1000 -> 0x9000
+- `end_loop1` is located at 0x1028 -> 0x9028
+- `array` is located at 0x2000 -> 0xa000. 
 
 If the program containing this code is loaded starting at address A = 0x8000, which instructions need to be rewritten, and what addresses are in the relocated code?
 

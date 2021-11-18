@@ -6,12 +6,34 @@
  * snprintf is a convenient function for constructing the pathname of the diary file.
  * (it's also pretty handy for subset3 of a certain assignment.)
  */
-
+#include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
+#define DIARY_PATH "/.diary"
+
 
 int main(void) {
 
-    // TODO: write some code
+    char *home_dir = getenv("HOME");
     
+    int length = strlen(home_dir) +
+                 strlen(DIARY_PATH) + 1;
+
+    char *full_path = malloc(length * sizeof(char));
+
+    snprintf(full_path, length, "%s%s", home_dir, DIARY_PATH);
+
+    FILE *stream = fopen(full_path, "r");
+    if (stream == NULL) {
+        perror(full_path);
+        exit(1);
+    }
+
+    int c;
+    while ((c = fgetc(stream)) != EOF) {
+        putchar(c);
+    }
+
     return 0;
 }

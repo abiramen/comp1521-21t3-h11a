@@ -61,13 +61,13 @@ void access_page(int virtual_page, int access_time, int n_physical_pages,
     // 1) The virtual page is already in a physical frame
     //    - update the last update time
     //
-    // 2) The virtual page is not in a physical page,
-    //    and there is free physical page
+    // 2) The virtual page is not in a physical frame,
+    //    and there is free physical frame
     //    - map a virtual page to a physical frame
     //    - update the physical frame entry in the IPT to map to the virtual page
     //    - update the last update time
 
-    // 3) The virtual page is not in a physical page,
+    // 3) The virtual page is not in a physical frame,
     //    and there is no free physical page
     //    - find the least recently used page, and evict it
     //    - update the new free frame to map to our virtual page
